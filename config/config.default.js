@@ -9,5 +9,12 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
+  config.wechat_config = {
+    token: 'wechat_public_number_demo',
+    appid: 'wx230f799414023398',
+    secret: '27118b180d47a9b11c094a03cea63a74',
+    getAccessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token',
+  };
+
   return config;
 };
