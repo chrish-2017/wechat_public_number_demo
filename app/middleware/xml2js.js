@@ -14,6 +14,7 @@ module.exports = () => {
           xml2js.parseXml(data).then(result => {
             resolve(result);
           }).catch(err => {
+            console.log(err);
             reject(err);
           });
         });
