@@ -30,6 +30,7 @@
   "dependencies": {
     "egg": "^2.2.1",
     "egg-scripts": "^2.5.0",
+    "egg-view-nunjucks": "^2.2.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {

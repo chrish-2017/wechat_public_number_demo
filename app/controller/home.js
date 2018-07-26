@@ -5,7 +5,22 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.body = 'hi, egg';
+    const appId = this.ctx.app.config.wechat_config.appid;
+    const ticket = this.ctx.app.ticket;
+    const nonceStr = Math.random().toString(36).substr(2, 15);
+    const timestamp = parseInt(new Date().getTime() / 1000);
+    const url = 'http://chrish.ngrok.xiaomiqiu.cn/';
+    const string = 'jsapi_ticket=' + ticket + '&noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + url;
+    const hash = crypto.createHash('sha1');
+    hash.update(string);
+    const signature = hash.digest('hex');
+    const data = {
+      appId,
+      timestamp,
+      nonceStr,
+      signature,
+    };
+    await this.ctx.render('home', data);
   }
 
   async fromWechat() {

@@ -16,11 +16,16 @@ module.exports = appInfo => {
     getAccessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET',
     postCreateMenuUrl: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN',
     getUserInfoUrl: 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN',
+    getJsapiTicketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi',
   };
   config.security = {
     csrf: {
       enable: false,
     },
+  };
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    defaultExtension: '.nj',
   };
 
   return config;

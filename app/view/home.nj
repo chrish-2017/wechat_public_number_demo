@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+<script>
+wx.config({
+  appId: '{{appId}}',
+  timestamp: '{{timestamp}}',
+  nonceStr: '{{nonceStr}}',
+  signature: '{{signature}}',
+  jsApiList: ['chooseImage'],
+});
+
+wx.ready(function() {
+  wx.chooseImage({
+    count: 1,
+    sizeType: ['original', 'compressed'],
+    sourceType: ['album', 'camera'],
+    success: function (res) {
+    var localIds = res.localIds;
+      alert(localIds);
+    }
+  });
+});
+
+wx.error(function(res) {
+  console.log(res);
+});
+</script>
+</body>
+</html>
