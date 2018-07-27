@@ -11,12 +11,14 @@ module.exports = appInfo => {
 
   config.wechat_config = {
     token: 'wechat_public_number_demo',
-    appid: 'wx230f799414023398',
-    secret: '27118b180d47a9b11c094a03cea63a74',
+    appId: 'wx230f799414023398',
+    appSecret: '27118b180d47a9b11c094a03cea63a74',
     getAccessTokenUrl: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET',
     postCreateMenuUrl: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN',
     getUserInfoUrl: 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN',
-    getJsapiTicketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi',
+    getJsApiTicketUrl: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi',
+    getOauthAccessTokenUrl: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code',
+    getOauthUserInfoUrl: 'https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN',
   };
   config.security = {
     csrf: {

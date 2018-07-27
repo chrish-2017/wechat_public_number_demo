@@ -8,4 +8,5 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/wechat', controller.home.fromWechat);
   router.post('/wechat', controller.home.toWechat);
+  router.get('/oauth', controller.home.oauth);
 };

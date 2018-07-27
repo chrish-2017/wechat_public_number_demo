@@ -12,14 +12,14 @@ class UpdateCache extends Subscription {
 
   async subscribe() {
     const config = this.ctx.app.config.wechat_config;
-    const url = config.getAccessTokenUrl.replace('APPID', config.appid).replace('APPSECRET', config.secret);
+    const url = config.getAccessTokenUrl.replace('APPID', config.appId).replace('APPSECRET', config.appSecret);
     const res = await this.ctx.curl(url, {
       dataType: 'json',
     });
     console.log(res.data.access_token);
     this.ctx.app.access_token = res.data.access_token;
 
-    const jsUrl = config.getJsapiTicketUrl.replace('ACCESS_TOKEN', res.data.access_token);
+    const jsUrl = config.getJsApiTicketUrl.replace('ACCESS_TOKEN', res.data.access_token);
     const jsRes = await this.ctx.curl(jsUrl, {
       dataType: 'json',
     });

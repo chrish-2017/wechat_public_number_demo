@@ -17,7 +17,7 @@ module.exports = app => {
             {
               type: 'view',
               name: 'view',
-              url: 'http://chrish.ngrok.xiaomiqiu.cn',
+              url: 'https://chrish.ngrok.xiaomiqiu.cn',
             },
           ],
         },

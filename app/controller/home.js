@@ -5,7 +5,7 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    const appId = this.ctx.app.config.wechat_config.appid;
+    const appId = this.ctx.app.config.wechat_config.appId;
     const ticket = this.ctx.app.ticket;
     const nonceStr = Math.random().toString(36).substr(2, 15);
     const timestamp = parseInt(new Date().getTime() / 1000);
@@ -57,6 +57,25 @@ class HomeController extends Controller {
       }
     }
     this.ctx.body = 'success';
+  }
+
+  async oauth() {
+    const query = this.ctx.query;
+    const code = query.code;
+    const config = this.ctx.app.config.wechat_config;
+    const url = config.getOauthAccessTokenUrl.replace('APPID', config.appId)
+      .replace('SECRET', config.appSecret).replace('CODE', code);
+    const res = await this.ctx.curl(url, {
+      dataType: 'json',
+    });
+    const access_token = res.data.access_token;
+    const openid = res.data.openid;
+    const userInfoUrl = config.getOauthUserInfoUrl.replace('ACCESS_TOKEN', access_token).replace('OPENID', openid);
+    const userInfoRes = await this.ctx.curl(userInfoUrl, {
+      dataType: 'json',
+    });
+    console.log(userInfoRes.data);
+    this.ctx.body = 'hi, ' + userInfoRes.data.nickname;
   }
 }
 
